@@ -1,0 +1,26 @@
+<?php
+/**
+ * hook_menu()
+ */
+function xu_menu() {
+  $items = array();
+
+  $items['aaa'] = array(
+    'page callback' => 'test_page_callback',
+    'access callback' => TRUE,
+  );
+
+  $items['xu/%ctools_js/aaa'] = array(
+    'page callback' => 'xu_modal_aaa',
+    'access callback' => TRUE,
+  );
+  
+  return $items;
+}
+
+/**
+ *  page callback for aaa
+ */
+function test_page_callback() {
+  return 'aaa';
+}
