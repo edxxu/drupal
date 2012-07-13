@@ -10,11 +10,17 @@ function xu_menu() {
     'access callback' => TRUE,
   );
 
+  $items['bbb'] = array(
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('test_form'),
+    'access callback' => TRUE,
+  );
+
   $items['xu/%ctools_js/aaa'] = array(
     'page callback' => 'xu_modal_aaa',
     'access callback' => TRUE,
   );
-  
+
   return $items;
 }
 
@@ -23,4 +29,31 @@ function xu_menu() {
  */
 function test_page_callback() {
   return 'aaa';
+}
+
+function test_form($form, &$form_state) {
+  $form = array();
+
+  $header = array(
+    'a' => t('a'),
+    'b' => t('b'),
+  );
+  $options = array(
+    1 => array(
+      'a' => 'test1',
+      'b' => 'test2',
+    ),
+    11 => array(
+      'a' => 'test3',
+      'b' => 'test4',
+    ),
+  );
+
+  $form['tableselect'] = array(
+    '#type' => 'tableselect',
+    '#header' => $header,
+    '#options' => $options,
+  );
+
+  return $form;
 }
